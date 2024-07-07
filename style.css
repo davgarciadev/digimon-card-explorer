@@ -1,0 +1,396 @@
+@font-face {
+    font-family: 'PixelDigivolve';
+    src: url('./fonts/PixelDigivolve.eot');
+    src: url('./fonts/PixelDigivolve.eot?#iefix') format('embedded-opentype'),
+        url('./fonts/PixelDigivolve.woff2') format('woff2'),
+        url('./fonts/PixelDigivolve.woff') format('woff'),
+        url('./fonts/PixelDigivolve.ttf') format('truetype'),
+        url('./fonts/PixelDigivolve.svg#PixelDigivolve') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+}
+
+a{
+  text-decoration: none;
+  color:rgb(255, 136, 0);
+}
+
+
+body{
+    background-color: #A9DBFF;
+    font-family: "PixelDigivolve";
+   
+    
+}
+
+main{
+    background-image: url("./src/pattern.png");
+    background-repeat: repeat;
+    background-size:auto;
+    min-height: 100vh;
+    height:max-content;
+    min-width: 340px;
+}
+
+header{
+    background-color: #0B0872;
+   
+}
+
+
+
+.container{
+    padding: 20px;
+    max-width: 1200px;
+    width: 80%;
+    margin: auto;
+}
+
+
+.navigation{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  
+}
+
+
+.navigation .nav{
+  display: flex;
+  gap: 20px;
+}
+
+
+.navigation .logo{
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content:left;
+    cursor: pointer;
+    gap: 10px;
+    width: auto;
+ 
+}
+.navigation .logo-img{
+    width: 50px;
+    transition: "filter" 0.2s ease;
+;
+}
+
+.logo:hover .logo-img{
+    filter: drop-shadow(0px 0px 5px rgb(255, 155, 40));
+}
+
+.navigation .title{
+    font-size: 2rem;
+    font-family: "PixelDigivolve";
+    color: white;
+    cursor: pointer;
+    transition: text-shadow 0.2s ease;
+  }
+
+  .logo:hover .title{
+    text-shadow: 0px 0px 10px  rgb(255, 155, 40);
+  }
+
+
+  .navigation .nav ul{
+    display: flex;
+    list-style: none;
+    gap: 20px;
+  }
+
+  .nav .btn{
+    padding: 5px 0px;
+    border: none;
+    border-radius: 1rem;
+    width: 100px;
+    cursor: pointer;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.288);
+    color: white;
+    
+    font-family: "PixelDigivolve";
+    border: 2px solid white;
+    
+  }
+
+  .nav .btn:hover{
+    box-shadow: 0px 0px 20px  rgb(255, 155, 40);
+  }
+
+  .navigation #search{
+    border-radius: 10px;
+    outline: none;
+    padding: 5px 10px;
+    border: 2px solid white;
+    font-family: 'PixelDigivolve';
+    color: rgb(255, 136, 0);
+  
+  }
+
+  .navigation #search:focus{
+    outline: none;
+    box-shadow: 0px 0px 10px  rgb(255, 155, 40);
+    color: rgb(255, 136, 0);
+  
+  }
+
+
+
+
+  .data{
+    background-color: rgb(0, 191, 255);
+  }
+
+  .vaccine{
+    background-color: rgb(84, 224, 91);
+  }
+
+  .virus{
+    background-color: rgb(184, 140, 214);
+  }
+
+  .other{
+    background-color: rgb(139, 139, 139);
+  }
+
+
+ 
+  .btn.data:hover{
+    background-color: rgb(0, 137, 228);
+  }
+
+  .btn.vaccine:hover{
+    background-color: rgb(2, 184, 2);
+  }
+
+  
+  .btn.virus:hover{
+    background-color:rgb(156, 54, 224);
+  }
+
+
+
+
+
+
+
+
+
+  .digimon-card-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+  }
+
+  
+
+
+
+  @media screen  and (max-width:1100px){
+    .digimon-card-container{
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .navigation{
+      flex-direction: column;
+      gap: 20px;
+    
+  }
+
+  }
+
+  @media screen  and (max-width:800px){
+    .digimon-card-container{
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    .navigation{
+      flex-direction: column;
+      gap: 20px;
+    
+  }
+  }
+
+  @media screen  and (max-width:700px){
+   
+    .navigation .nav{
+      flex-direction: column;
+      gap: 20px;
+    
+  }
+  }
+
+  @media screen  and (max-width:400px){
+    
+    .navigation ul{
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+  }
+
+    .nav li{
+      width: 100%;
+    }
+    .nav .btn{
+      width: 100%;
+    }
+
+    .container{
+      width: 100%;
+    }
+  }
+
+
+
+
+
+  .digimon-card-container .digimon-card{
+    background-color: white;
+    box-shadow: 0px 0px 5px  rgba(0, 0, 0, 0.644);
+    position: relative;
+    isolation: isolate;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in, box-shadow 0.3s ease-in;
+  }
+
+  .digimon-card:hover .digimon-title,
+  .digimon-card:hover .digimon-level{
+    text-shadow: 0px 0px 10px  rgb(255, 155, 40);
+  }
+
+  .digimon-card-container .digimon-card:hover{
+    transform: scale(1.05);
+    box-shadow: 0px 0px 20px  rgb(255, 94, 0);
+  }
+
+
+
+  .digimon-card-container .digimon-card::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 40%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background-color: #0B0872;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+
+
+  .digimon-card .digimon-img{
+    width: 120px;
+    border-radius: 10px;
+    
+  }
+
+
+  .digimon-card .digimon-title{
+    display: flex;
+    align-items: center;
+    color: white;
+    gap: 10px;
+    margin: 10px 0px;
+  }
+
+  .digimon-card .title-id{
+    background-color: rgba(255, 255, 255, 0.233);
+    padding: 2px 5px;
+    border-radius: 10px;
+  }
+
+  
+  .digimon-card .digimon-level{
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+    color: white;
+    width: 100%;
+  }
+
+  .digimon-level .level-title{
+    font-size: 1fr;
+  }
+
+  .digimon-level .star-icon{
+    color: white;
+    font-size: 12px;
+  }
+
+  .digimon-attribute{
+    display: flex;
+    gap: 10px;
+  }
+
+  .digimon-attribute .attribute{
+    font-size: 12px;
+    padding: 2px 5px;
+    border-radius: 10px;
+    
+  }
+
+  .digimon-type{
+    display: flex;
+    margin: 10px;
+  }
+
+  .type{
+    font-size: 12px;
+    font-weight: 100;
+    background-color: rgba(128, 128, 128, 0.089);
+    padding: 2px 5px;
+    border-radius: 10px;
+
+  }
+
+
+
+  .digimon-card-container .digimon-card .star-icon{
+    width: 20px;
+  }
+
+
+  
+
+  footer{
+    background-color: #0B0872;
+  }
+  
+  footer ul{
+    display: flex;
+    justify-content: start;
+    list-style: none;
+    gap: 20px;
+  }
+
+  footer ul a{
+    color: white;
+  }
+  
+
+  .footer__copyright{
+    padding: 30px 0;
+    color: rgba(255, 255, 255, 0.795);
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+  }
+
+  .footer__copyright p{
+    margin-top: 10px;
+  }
+  
