@@ -98,7 +98,7 @@ const getDigimonByAttribute = async (attribute) => {
 /* Función asíncrona para obtener un Digimon por su nombre
    @param {string} name - Nombre del digimon que se desea buscar
    ------------------------------------------------------------------- */
-const getDigimonByName = async (name) => {
+   const getDigimonByName = async (name) => {
     try {
          // Realizar la petición GET al API con el nombre del Digimon
         const response = await fetch(`${URL_DIGIAPI}${name}`);
