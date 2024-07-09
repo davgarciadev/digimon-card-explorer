@@ -20,7 +20,7 @@ btnsElement.forEach( (btn) => {
 
 // Evento al hacer clic en el logo cargamos todos los digimons en orden ascendente (id)
 logoElement.addEventListener("click", (e) => {
-    getDigimonPage() 
+    getAllDigimons() 
 })
 
 // Evento al presionar Enter en el input de búsqueda para buscar un Digimon por nombre
@@ -41,24 +41,21 @@ let nextPage = "";
 /* Función asincróna para obtener y mostrar todos los Digimons en orden ascendente segun api(por id)
    @param {} void 
    ------------------------------------------------------------------- */
-const getDigimonPage = async () => {
+const getAllDigimons = async () => {
     // Resetear el contenido del contenedor de tarjetas
     cardContainerElement.innerHTML = "";
+    const pageSize = 25;
 
     // Realizar la solicitud a la API para obtener la página de Digimon
-    const res = await fetch(URL_PAGE);
+    const res = await fetch(`https://digi-api.com/api/v1/digimon?&&pageSize=${pageSize}`);
     const pageObj = await res.json();
     const digiList = pageObj.content;
-
     // Iterar sobre cada Digimon y crear una tarjeta para cada uno
-    digiList.forEach((digi) => {
-        fetch(digi.href)
-            .then((res) => res.json())
-            .then((digimon) => createDigimonCard(digimon)); // Llamar a la función para crear tarjetas de Digimon
-    });
-
+    iterateDigimonList(digiList)
 
 }
+
+
 
 
 // 
@@ -68,25 +65,45 @@ const getDigimonPage = async () => {
 const getDigimonByAttribute = async (attribute) => {
     // Resetear el contenido del contenedor de tarjetas
     cardContainerElement.innerHTML = "";
+    const pageSize = 25;
 
-    // Iterar sobre los índices para obtener los Digimon correspondientes (excluyendo algunos específicos por motivos de la api)
-    for (let i = 1; i < 25; i++) {
-        if (i === 7 || i === 8 || i === 9 || i === 10 || i === 11 || i === 12 || i === 13 || i === 23) {
-            // Saltar iteración si el índice está en la lista de exclusiones
-            continue;
-        } else {
-            // Realizar la solicitud a la API para obtener el Digimon específico
-            const response = await fetch(`${URL_DIGIAPI}${i}`);
-            const digimon = await response.json();
+    // // Iterar sobre los índices para obtener los Digimon correspondientes (excluyendo algunos específicos por motivos de la api)
+    // for (let i = 1; i < 50; i++) {
+    //     if (i === 7 || i === 8 || i === 9 || i === 10 || i === 11 || i === 12 || i === 13 || i === 23) {
+    //         // Saltar iteración si el índice está en la lista de exclusiones
+    //         continue;
+    //     } else {
 
-            // Obtener el primer atributo del Digimon (si existe)
-            const digimon_attribute = digimon.attributes.length > 0 ? digimon.attributes[0].attribute : "";
+    //         try {
+    //             // Realizar la solicitud a la API para obtener el Digimon específico
+    //             const response = await fetch(`${URL_DIGIAPI}${i}`);
+    //             const digimon = await response.json();
+  
+    //              // Obtener el primer atributo del Digimon (si existe)
+    //             const digimon_attribute = digimon.attributes.length > 0 ? digimon.attributes[0].attribute : "";
+  
+    //             // Solo creamos la tarjeta si el atributo coincide o es "all"
+    //             if (digimon_attribute.toLowerCase() === attribute || attribute === "all") {
+    //             createDigimonCard(digimon); // Llamar a la función para crear tarjetas de Digimon
+    //           }
+    //         } catch (error) {
+    //            console.error("Error al obtener el Digimon, ", error);
+    //         }
+           
+    //     }
+    // }
 
-            // Solo creamos la tarjeta si el atributo coincide o es "all"
-            if (digimon_attribute.toLowerCase() === attribute || attribute === "all") {
-                createDigimonCard(digimon); // Llamar a la función para crear tarjetas de Digimon
-            }
-        }
+    try{
+        console.log(attribute)
+        const response = await fetch(`https://digi-api.com/api/v1/digimon?attribute=${attribute}&&pageSize=${pageSize}`)
+        const pageObj = await response.json();
+        const digimonList = pageObj.content;
+    
+        iterateDigimonList(digimonList) 
+
+
+    }catch(err){
+        console.error("Error al obtener el digimon por atributo, ",err)
     }
 }
 
@@ -95,21 +112,21 @@ const getDigimonByAttribute = async (attribute) => {
 
 
 //
-/* Función asíncrona para obtener un Digimon por su nombre
+/* Función asíncrona para obtener todos los Digimon que coincidan con el nombre introducido
    @param {string} name - Nombre del digimon que se desea buscar
    ------------------------------------------------------------------- */
    const getDigimonByName = async (name) => {
     try {
          // Realizar la petición GET al API con el nombre del Digimon
-        const response = await fetch(`${URL_DIGIAPI}${name}`);
-
-        if (!response.ok) {
-            throw new Error(`Error`); // Lanzar un error si la respuesta no es satisfactoria
-        }
+        const response = await fetch(`https://digi-api.com/api/v1/digimon?name=${name}`);
+    
 
         cardContainerElement.innerHTML = ""; // Limpiar el contenido actual del contenedor de tarjetas
-        const digimon = await response.json(); 
-        createDigimonCard(digimon); // Llamar a la función para crear la tarjeta del Digimon con los datos obtenidos
+        const pageObj = await response.json(); 
+        const digimonList = pageObj.content;
+        
+        iterateDigimonList(digimonList)
+        
 
     } catch (err) {
         console.error("Error al obtener el Digimon:", name); // Mostrar un mensaje de error en la consola si ocurre un problema durante la obtención del Digimon
@@ -117,6 +134,16 @@ const getDigimonByAttribute = async (attribute) => {
 }
 
 
+// Función auxiliar que itera una lista de digimon y obtiene cada uno de ellos mediante una petición a la api 
+const iterateDigimonList = (digimonList) => {
+
+    digimonList.forEach(async(digi) => {
+        const digiResponse = await fetch(digi.href);
+        const digimon = await digiResponse.json();
+        createDigimonCard(digimon) // Creamos la tarjeta con los datos del digimon
+    });
+
+}
 
 /* Función asíncrona para crear una tarjeta pasada el objeto de Digimon
    @param {obj} digimon - Objeto devuelto por la api que representa un digimon.
@@ -126,10 +153,20 @@ const createDigimonCard = (digimon) => {
     const card = document.createElement("div");
     card.classList.add("digimon-card"); 
 
+
     // Generar el HTML para los atributos del Digimon (si existen)
     const attributeHtml = digimon.attributes.length > 0
         ? digimon.attributes.map(obj => `<p class="attribute ${obj.attribute.toLowerCase()}">${obj.attribute}</p>`).join("")
         : `<p class="attribute other">???</p>`; // Si no hay atributos, mostrar "???"
+
+    // Determinamos el color del borde en función del atributo
+    
+    let resultClass = "";
+    digimon.attributes.forEach(obj => resultClass +=obj.attribute.toLowerCase())
+    card.classList.add(resultClass)
+    
+    console.log(resultClass)
+    
 
     // Generar el HTML para los tipos del Digimon (si existen)
     const typeHtml = digimon.types.length > 0
@@ -175,6 +212,8 @@ const createDigimonCard = (digimon) => {
             starNumber = 1; // Si el nivel no coincide con ninguno, mostrar una estrella
     }
 
+    
+
     // Generar el HTML para las estrellas según el número y color determinados
     let htmlStars = "";
     for (let i = 0; i < starNumber; i++) {
@@ -215,5 +254,5 @@ const createDigimonCard = (digimon) => {
 
 
 // Al comienzar nuestra app mostramos todos los digimons
-getDigimonByAttribute("all")
+getAllDigimons();
 

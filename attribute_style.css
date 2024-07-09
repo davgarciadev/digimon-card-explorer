@@ -1,0 +1,129 @@
+
+/* ------------Card Border-------------- */
+
+.digimon-card.virus{
+    border: 10px solid rgb(156, 54, 224);
+  }
+
+  .digimon-card.virusdata{
+    border-top-color:  rgb(156, 54, 224);
+    border-left-color: rgb(156, 54, 224);
+    border-bottom-color:  rgb(0, 137, 228);
+    border-right-color: rgb(0, 137, 228);
+  }
+
+  .digimon-card.vaccine{
+    border: 10px solid rgb(2, 184, 2);
+  }
+
+  .digimon-card.data{
+    border: 10px solid rgb(0, 137, 228);
+  }
+
+  .digimon-card.datavaccine{
+    border-bottom-color:  rgb(2, 184, 2);
+    border-right-color: rgb(2, 184, 2);
+    border-top-color:  rgb(0, 137, 228);
+    border-left-color: rgb(0, 137, 228);
+  }
+
+
+
+
+  .digimon-card.vaccinedata{
+    border-top-color:  rgb(2, 184, 2);
+    border-left-color: rgb(2, 184, 2);
+    border-bottom-color:  rgb(0, 137, 228);
+    border-right-color: rgb(0, 137, 228);
+  }
+
+  .digimon-card.free{
+    border: 10px solid rgb(255, 255, 255);
+  }
+
+  .digimon-card.freedata{
+    border-top-color:  rgb(255, 255, 255);
+    border-left-color: rgb(255, 255, 255);
+    border-bottom-color:  rgb(0, 137, 228);
+    border-right-color: rgb(0, 137, 228);
+  }
+
+  .digimon-card.datafree{
+    border-bottom-color:  rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color:  rgb(0, 137, 228);
+    border-left-color: rgb(0, 137, 228);
+  }
+
+  .digimon-card.freevaccine{
+    border-top-color:  rgb(255, 255, 255);
+    border-left-color: rgb(255, 255, 255);
+    border-bottom-color:  rgb(2, 184, 2);
+    border-right-color: rgb(2, 184, 2);
+  }
+
+  .digimon-card.vaccinevirus{
+    border-top-color:  rgb(2, 184, 2);
+    border-left-color: rgb(2, 184, 2);
+    border-bottom-color:  rgb(156, 54, 224);
+    border-right-color: rgb(156, 54, 224);
+  }
+
+  .digimon-card.virusvaccine{
+    
+    border-bottom-color:  rgb(2, 184, 2);
+    border-right-color: rgb(2, 184, 2);
+    border-top-color:  rgb(156, 54, 224);
+    border-left-color: rgb(156, 54, 224);
+  }
+
+
+
+  .digimon-card.data:hover{
+    box-shadow: 0px 0px 20px rgb(0, 137, 228) ;
+  }
+  
+  .digimon-card.vaccine:hover, .digimon-card.vaccinevirus:hover{
+    box-shadow: 5px 5px 10px rgb(0, 63, 0) ;
+  }
+
+  .digimon-card.virus:hover{
+    box-shadow: 0px 0px 20px rgb(28, 0, 46);
+  }
+
+
+
+  /* ------------Atribute Tag-------------- */
+
+
+  .data{
+    background-color: rgb(0, 191, 255);
+  }
+
+  .vaccine{
+    background-color: rgb(84, 224, 91);
+  }
+
+  .virus{
+    background-color: rgb(184, 140, 214);
+    
+  }
+
+  .other{
+    background-color: rgb(139, 139, 139);
+  }
+
+
+ 
+  .btn.data:hover{
+    background-color: rgb(0, 137, 228);
+  }
+
+  .btn.vaccine:hover{
+    background-color: rgb(2, 184, 2);
+  }
+
+  
+  .btn.virus:hover{
+    background-color:rgb(156, 54, 224);
+  }

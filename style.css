@@ -1,3 +1,5 @@
+@import url(attribute_style.css);
+
 @font-face {
     font-family: 'PixelDigivolve';
     src: url('./fonts/PixelDigivolve.eot');
@@ -119,12 +121,11 @@ header{
     
     font-family: "PixelDigivolve";
     border: 2px solid white;
+    transition: background-color 0.4s ease;
     
   }
 
-  .nav .btn:hover{
-    box-shadow: 0px 0px 20px  rgb(255, 155, 40);
-  }
+  
 
   .navigation #search{
     border-radius: 10px;
@@ -143,39 +144,6 @@ header{
   
   }
 
-
-
-
-  .data{
-    background-color: rgb(0, 191, 255);
-  }
-
-  .vaccine{
-    background-color: rgb(84, 224, 91);
-  }
-
-  .virus{
-    background-color: rgb(184, 140, 214);
-  }
-
-  .other{
-    background-color: rgb(139, 139, 139);
-  }
-
-
- 
-  .btn.data:hover{
-    background-color: rgb(0, 137, 228);
-  }
-
-  .btn.vaccine:hover{
-    background-color: rgb(2, 184, 2);
-  }
-
-  
-  .btn.virus:hover{
-    background-color:rgb(156, 54, 224);
-  }
 
 
 
@@ -253,7 +221,8 @@ header{
 
 
 
-  .digimon-card-container .digimon-card{
+    .digimon-card{
+    border: 10px solid black;
     background-color: white;
     box-shadow: 0px 0px 5px  rgba(0, 0, 0, 0.644);
     position: relative;
@@ -274,7 +243,7 @@ header{
 
   .digimon-card-container .digimon-card:hover{
     transform: scale(1.05);
-    box-shadow: 0px 0px 20px  rgb(255, 94, 0);
+    box-shadow: 2px 2px 10px rgb(0, 9, 63) ;
   }
 
 
@@ -284,8 +253,8 @@ header{
     position: absolute;
     width: 100%;
     height: 40%;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     background-color: #0B0872;
     top: 0;
     left: 0;
